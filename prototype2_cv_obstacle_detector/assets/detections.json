@@ -1,0 +1,167 @@
+[
+  {
+    "image": "scene_1.png",
+    "detections": [
+      {
+        "class": "bird_flock",
+        "bbox": [
+          676,
+          160,
+          796,
+          310
+        ],
+        "confidence": 0.8921943783473414
+      },
+      {
+        "class": "buoy",
+        "bbox": [
+          157,
+          347,
+          204,
+          431
+        ],
+        "confidence": 0.904706588724319
+      },
+      {
+        "class": "vessel",
+        "bbox": [
+          393,
+          270,
+          433,
+          332
+        ],
+        "confidence": 0.8739996062122358
+      },
+      {
+        "class": "bird_flock",
+        "bbox": [
+          508,
+          326,
+          628,
+          476
+        ],
+        "confidence": 0.8177030794663815
+      },
+      {
+        "class": "vessel",
+        "bbox": [
+          69,
+          293,
+          148,
+          359
+        ],
+        "confidence": 0.7925345543943287
+      }
+    ]
+  },
+  {
+    "image": "scene_2.png",
+    "detections": [
+      {
+        "class": "buoy",
+        "bbox": [
+          719,
+          324,
+          776,
+          386
+        ],
+        "confidence": 0.7296158722258765
+      },
+      {
+        "class": "buoy",
+        "bbox": [
+          518,
+          464,
+          605,
+          519
+        ],
+        "confidence": 0.8635096305458908
+      },
+      {
+        "class": "buoy",
+        "bbox": [
+          60,
+          299,
+          114,
+          356
+        ],
+        "confidence": 0.8050459247408879
+      },
+      {
+        "class": "iceberg",
+        "bbox": [
+          836,
+          445,
+          948,
+          503
+        ],
+        "confidence": 0.8618459844501405
+      },
+      {
+        "class": "iceberg",
+        "bbox": [
+          484,
+          458,
+          587,
+          509
+        ],
+        "confidence": 0.809515437241969
+      }
+    ]
+  },
+  {
+    "image": "scene_3.png",
+    "detections": [
+      {
+        "class": "vessel",
+        "bbox": [
+          710,
+          271,
+          751,
+          367
+        ],
+        "confidence": 0.8618484737808269
+      },
+      {
+        "class": "bird_flock",
+        "bbox": [
+          599,
+          201,
+          719,
+          351
+        ],
+        "confidence": 0.8465844819427357
+      },
+      {
+        "class": "buoy",
+        "bbox": [
+          381,
+          398,
+          438,
+          474
+        ],
+        "confidence": 0.7811413255417667
+      },
+      {
+        "class": "buoy",
+        "bbox": [
+          273,
+          459,
+          319,
+          539
+        ],
+        "confidence": 0.9576402511416249
+      },
+      {
+        "class": "vessel",
+        "bbox": [
+          642,
+          283,
+          720,
+          346
+        ],
+        "confidence": 0.8767440672700346
+      }
+    ]
+  }
+]

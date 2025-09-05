@@ -1,0 +1,14 @@
+{
+  "alpha": 0.01,
+  "gamma": 0.9,
+  "epsilon": 0.2,
+  "episodes": 3400,
+  "max_steps": 1300,
+  "diag": true,
+  "w_dist": 1.0,
+  "w_hazard": 1.5,
+  "w_mpa": 8.0,
+  "goal_reward": 10.0,
+  "H": 40,
+  "W": 60
+}
