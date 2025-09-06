@@ -9,6 +9,7 @@ import pandas as pd
 from rl_agent import RLConfig, train_qlearning, greedy_path, GridEnv
 from transformer_policy import TransformerPolicy, PolicyConfig
 import joblib, torch
+from rag_utils import retrieve, answer_llm, ensure_index
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -233,6 +234,43 @@ with tab2:
             "HazardSum": round(hazard_sum(path), 1) if path else None
         }]
         st.dataframe(pd.DataFrame(rows))
+
+# ---------- RAG Copilot (LLM + Retrieval) ----------
+tab_rag = st.tabs(["RAG Copilot (LLM)"])[0]
+with tab_rag:
+    st.subheader("RAG Copilot — Ask the map (LLM + Retrieval)")
+    st.markdown(
+        "Ask natural-language questions. I retrieve the most relevant KB snippets and, "
+        "if available, call an LLM to answer with citations."
+    )
+
+    # Make/refresh the index (OpenAI+FAISS if possible; else TF-IDF).
+    try:
+        backend = ensure_index()
+        st.caption(f"Retriever backend: {backend.upper()}")
+    except Exception as e:
+        st.error(f"Index build failed: {e}")
+        backend = None
+
+    top_k = st.sidebar.slider("RAG: top_k chunks", 2, 8, 4, 1)
+    query = st.text_input("Question", value="How do MPAs affect route planning and safety trade-offs?")
+
+    if st.button("Search & (optionally) Ask LLM") and backend is not None:
+        hits = retrieve(query, k=top_k)
+        if not hits:
+            st.warning("No results retrieved.")
+        else:
+            st.markdown("**Retrieved context:**")
+            for h in hits:
+                st.write(f"- `{h['meta']['source']}#{h['meta']['chunk_id']}` (score={h['score']:.3f})")
+                st.code(h["text"][:600])
+
+            # LLM answer (if OPENAI_API_KEY set); otherwise shows fallback text
+            ans = answer_llm(query, hits)
+            st.markdown("### Answer")
+            st.write(ans)
+
+
 
 # ---------- Transformer Policy (Imitation) ----------
 with tab3:
